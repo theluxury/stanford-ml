@@ -40,18 +40,18 @@ Theta_grad = zeros(size(Theta));
 %                     partial derivatives w.r.t. to each element of Theta
 %
 
-J = sum(sum(R.*((X*Theta' - Y).^2))) / 2 + (lambda / 2) * sumsqr(Theta) + (lambda / 2) * sumsqr(X);
+J = sum(sum(R.*((X*Theta' - Y).^2))) / 2 + (lamsum(Theta.^2);
 
 for i = 1:num_movies
     inner_vector = (X(i,:)*Theta' - Y(i,:));
     another_vector = (R(i,:).*(inner_vector));
-    X_grad(i,:) = another_vector * Theta + lambda * X(i,:);
+    X_grad(i,:) = another_vector * Theta;
 end
 
 for i = 1:num_users
     inner_vector = (X*Theta(i,:)' - Y(:,i));
     another_vector = (R(:,i).*(inner_vector));
-    Theta_grad(i,:) = another_vector' * X + lambda * Theta(i,:);
+    Theta_grad(i,:) = another_vector' * X;
 end
 
 % =============================================================
